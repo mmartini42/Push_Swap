@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 21:45:01 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/11 23:29:34 by mathmart         ###   ########.fr       */
+/*   Updated: 2021/12/11 23:58:29 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_append_strs(char *s1, char *s2, bool free_s1, bool free_s2);
 char	**ft_add_str_to_str_array(char **str_array, char *str, bool free_array);
 
 /* Parsing */
-void	ps_parsing(char *str, char **nbrs);
+char	**ps_parsing(char *str, char **nbrs);
 bool	ps_is_nbr(char	*nbr);
 
 /* Errors */

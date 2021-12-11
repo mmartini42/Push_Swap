@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 22:05:20 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/11 23:24:16 by mathmart         ###   ########.fr       */
+/*   Updated: 2021/12/11 23:58:14 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	ps_is_nbr(char	*nbr)
 	return (true);
 }
 
-void	ps_parsing(char *str, char **nbrs)
+char	**ps_parsing(char *str, char **nbrs)
 {
 	size_t	i;
 
@@ -43,4 +43,5 @@ void	ps_parsing(char *str, char **nbrs)
 			ps_error_pars(nbrs);
 		i++;
 	}
+	return (nbrs);
 }

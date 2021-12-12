@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 21:40:45 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/11 22:34:32 by mathmart         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:27:20 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <limits.h>
 # include "Push_swap_func.h"
 # include "Push_swap_struct.h"
+# include "../libft/libft.h"
 
 #endif

@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ps_box_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 21:49:13 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/12 16:25:18 by mathmart         ###   ########.fr       */
+/*   Created: 2021/12/12 15:47:15 by mathmart          #+#    #+#             */
+/*   Updated: 2021/12/12 16:16:43 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-static void	ps_check_args(char ***nbrs, char **av)
+static int	ps_size_nbrs(char **nbrs)
 {
 	size_t	i;
 
-	i = 1;
-	while (av[i])
-	{
-		if (ps_is_nbr(av[i]) == false)
-			ps_error_pars(*nbrs);
-		*nbrs = ft_add_str_to_str_array(*nbrs, av[i], true);
+	if (!nbrs)
+		return (0);
+	i = 0;
+	while (nbrs[i])
 		i++;
-	}
+	return (i);
 }
 
-int	main(int ac, char **av)
+t_box	*px_box_init(char **nbrs)
 {
 	t_box	*box;
-	char	**nbrs;
 
-	nbrs = NULL;
-	if (ac <= 1)
-		return (ps_error_args());
-	if (ac == 2)
-		nbrs = ps_parsing(av[1], nbrs);
-	else
-		ps_check_args(&nbrs, av);
-	box = ps_box_create(nbrs);
+	box = ft_calloc(1, sizeof(t_box));
+	if (!box)
+		return (NULL);
+	box->size = ps_size_nbrs(nbrs);
+	box->stack_a = NULL;
+	box->stack_b = NULL;
 }

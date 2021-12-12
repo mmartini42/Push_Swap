@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ps_free_box.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 22:00:48 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/11 22:02:17 by mathmart         ###   ########.fr       */
+/*   Created: 2021/12/12 16:36:01 by mathmart          #+#    #+#             */
+/*   Updated: 2021/12/12 16:37:46 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-size_t	ft_strlen(char *str)
+void	ps_free_box(t_box *box)
 {
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	free(box);
+	box = NULL;
 }

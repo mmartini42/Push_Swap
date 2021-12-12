@@ -1,7 +1,9 @@
 SRCS += 
-SRCS += Sources/utils/ps_atoi.c
-SRCS += Sources/utils/ps_strlen.c
-SRCS += Sources/utils/ps_free_string_array.c
-SRCS += Sources/main.c
+SRCS += Sources/box/ps_box_create.c
+SRCS += Sources/box/ps_box_init.c
+SRCS += Sources/box/ps_free_box.c
 SRCS += Sources/errors/ps_errors.c
+SRCS += Sources/main.c
 SRCS += Sources/parsing/ps_parsing.c
+SRCS += Sources/utils/ps_atoi.c
+SRCS += Sources/utils/ps_free_string_array.c

@@ -20,15 +20,20 @@ int		ps_atoi(char *str);
 void	*ps_free_string_array(char ***string_array);
 
 /* Parsing */
-char	**ps_parsing(char *str, char **nbrs);
+char	**ps_parsing(char *str, int ac);
 bool	ps_is_nbr(char	*nbr);
+void	ft_check_identical(char **nbrs, int ac);
+
+/*  Memory */
+void	ps_final_free(int ac, char **nbrs);
 
 /* Errors */
 int		ps_error_args(void);
-void	ps_error_pars(char **nbrs);
+void	ps_error_pars(char **nbrs, int ac);
 
 /* Box */
-t_box	*px_box_init(char **nbrs);
+t_box	*ps_box_init(char **nbrs);
 t_box	*ps_box_create(char **nbrs);
+void	ps_free_box(t_box *box);
 
 #endif

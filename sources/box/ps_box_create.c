@@ -55,4 +55,5 @@ t_box	*ps_box_create(char **nbrs)
 	if (ps_check_box(box) == false)
 		ps_free_box(box);
 	ps_fill_box(box, nbrs);
+	return (box);
 }

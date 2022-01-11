@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_box_init.c                                      :+:      :+:    :+:   */
+/*   ps_final_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 15:47:15 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/12 16:16:43 by mathmart         ###   ########.fr       */
+/*   Created: 2022/01/11 18:12:36 by mathmart          #+#    #+#             */
+/*   Updated: 2022/01/11 18:14:19 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-static int	ps_size_nbrs(char **nbrs)
+void	ps_final_free(int ac, char **nbrs)
 {
-	size_t	i;
-
-	if (!nbrs)
-		return (0);
-	i = 0;
-	while (nbrs[i])
-		i++;
-	return (i);
-}
-
-t_box	*ps_box_init(char **nbrs)
-{
-	t_box	*box;
-
-	box = ft_calloc(1, sizeof(t_box));
-	if (!box)
-		return (NULL);
-	box->size = ps_size_nbrs(nbrs);
-	box->stack_a = NULL;
-	box->stack_b = NULL;
-	return (box);
+	if (ac == 2)
+		ps_free_string_array(&nbrs);
+	else
+		free(nbrs);
+	nbrs = NULL;
 }

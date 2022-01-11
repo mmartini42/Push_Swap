@@ -40,7 +40,7 @@ WHITE		= \033[1;49;97m
 NAME		= push_swap
 OBJS		= $(SRCS:%.c=%.o)
 LIBFT		= libft/libft.a
-CFLAGS		= -Wall -Wextra -glldb -flto -march=native -ffast-math -I ./Includes
+CFLAGS		= -Wall -Wextra -glldb -I ./Includes
 OBJ_DIR 	= Objects
 OBJ_PATH	= $(addprefix $(OBJ_DIR)/, $(OBJS))
 

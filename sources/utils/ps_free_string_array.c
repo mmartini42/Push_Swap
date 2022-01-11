@@ -21,11 +21,13 @@ void	*ps_free_string_array(char ***string_array)
 		index = 0;
 		while ((*string_array)[index])
 		{
-			free((*string_array)[index]);
+			if ((*string_array)[index])
+				free((*string_array)[index]);
 			(*string_array)[index] = NULL;
 			index++;
 		}
-		free(*string_array);
+		if ((*string_array))
+			free(*string_array);
 		*string_array = NULL;
 	}
 	return (NULL);

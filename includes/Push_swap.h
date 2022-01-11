@@ -18,8 +18,8 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <limits.h>
-# include "Push_swap_func.h"
-# include "Push_swap_struct.h"
 # include "../libft/libft.h"
+# include "Push_swap_struct.h"
+# include "Push_swap_func.h"
 
 #endif

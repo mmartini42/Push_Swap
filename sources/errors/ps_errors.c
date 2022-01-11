@@ -18,9 +18,13 @@ int	ps_error_args(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ps_error_pars(char **nbrs)
+void	ps_error_pars(char **nbrs, int ac)
 {
-	ps_free_string_array(&nbrs);
+	if (ac == 2)
+		ps_free_string_array(&nbrs);
+	else
+		free(nbrs);
+	nbrs = NULL;
 	write(2, "Error\n", 7);
 	exit(EXIT_FAILURE);
 }

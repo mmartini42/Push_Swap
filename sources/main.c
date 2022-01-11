@@ -12,18 +12,22 @@
 
 #include "Push_swap.h"
 
-static void	ps_check_args(char ***nbrs, char **av)
+static char	**ps_check_args(char **av, int ac)
 {
 	size_t	i;
+	char	**nbrs;
 
 	i = 1;
+	nbrs = NULL;
 	while (av[i])
 	{
 		if (ps_is_nbr(av[i]) == false)
-			ps_error_pars(*nbrs);
-		*nbrs = ft_add_str_to_str_array(*nbrs, av[i], true);
+			ps_error_pars(nbrs, ac);
+		nbrs = ft_add_str_to_str_array(nbrs, av[i], true);
 		i++;
 	}
+	ft_check_identical(nbrs, ac);
+	return (nbrs);
 }
 
 int	main(int ac, char **av)
@@ -35,8 +39,11 @@ int	main(int ac, char **av)
 	if (ac <= 1)
 		return (ps_error_args());
 	if (ac == 2)
-		nbrs = ps_parsing(av[1], nbrs);
+		nbrs = ps_parsing(av[1], ac);
 	else
-		ps_check_args(&nbrs, av);
-	box = ps_box_create(nbrs);
+		nbrs = ps_check_args(av, ac);
+	for (int i = 0; nbrs[i]; i++)
+		dprintf(1, "%s\n", nbrs[i]);
+	// box = ps_box_create(nbrs);
+	ps_final_free(ac, nbrs);
 }

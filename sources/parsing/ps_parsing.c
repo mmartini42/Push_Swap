@@ -12,6 +12,25 @@
 
 #include "Push_swap.h"
 
+void	ft_check_identical(char **nbrs, int ac)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (nbrs[i])
+	{
+		j = i + 1;
+		while (nbrs[j])
+		{
+			if (ft_strcmp(nbrs[i], nbrs[j]) == 0 && i != j)
+				ps_error_pars(nbrs, ac);
+			j++;
+		}
+		i++;
+	}
+}
+
 bool	ps_is_nbr(char	*nbr)
 {
 	size_t	i;
@@ -29,9 +48,10 @@ bool	ps_is_nbr(char	*nbr)
 	return (true);
 }
 
-char	**ps_parsing(char *str, char **nbrs)
+char	**ps_parsing(char *str, int ac)
 {
 	size_t	i;
+	char	**nbrs;
 
 	if (!str || ft_strlen(str) == 0)
 		ps_error_args();
@@ -40,8 +60,9 @@ char	**ps_parsing(char *str, char **nbrs)
 	while (nbrs[i])
 	{
 		if (ps_is_nbr(nbrs[i]) == false)
-			ps_error_pars(nbrs);
+			ps_error_pars(nbrs, ac);
 		i++;
 	}
+	ft_check_identical(nbrs, ac);
 	return (nbrs);
 }

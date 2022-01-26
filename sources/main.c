@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 21:49:13 by mathmart          #+#    #+#             */
-/*   Updated: 2022/01/14 05:41:07 by mathmart         ###   ########.fr       */
+/*   Updated: 2022/01/26 06:31:21 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,45 @@ static char	**ps_check_args(char **av, int ac)
 	return (nbrs);
 }
 
+bool	check(t_box *box)
+{
+	int	index;
+	int	current;
+	int	next;
+
+	if (list_size(box->stack_b) > 0)
+		return (false);
+	index = -1;
+	while (++index < list_size(box->stack_a) - 1)
+	{
+		current = ps_get_stack_value(box->stack_a, index);
+		next = ps_get_stack_value(box->stack_a, index + 1);
+		if (current >= next)
+			return (false);
+	}
+	return (true);
+}
+
+static void	sort(t_box *box)
+{
+	if (check(box))
+		return ;
+	if (box->size >= 500)
+		ps_sort_big(box, 10);
+	else if (box->size >= 100)
+		ps_sort_big(box, 5);
+	else if (box->size >= 50)
+		ps_sort_big(box, 4);
+	else if (box->size >= 6)
+		ps_sort_big(box, 2);
+	else if (box->size >= 4)
+		ps_mid_sort(box);
+	else if (box->size == 3)
+		ps_hard_sort(box);
+	else if (box->size == 2)
+		ps_little_sort(box, box->stack_a);
+}
+
 int	main(int ac, char **av)
 {
 	t_box	*box;
@@ -48,6 +87,7 @@ int	main(int ac, char **av)
 		ps_final_free(ac, nbrs);
 		return (ps_error_args());
 	}
+	sort(box);
 	list_clear(box->stack_a, free);
 	free(box);
 	ps_final_free(ac, nbrs);

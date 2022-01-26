@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 16:23:27 by mathmart          #+#    #+#             */
-/*   Updated: 2022/01/26 02:09:46 by mathmart         ###   ########.fr       */
+/*   Updated: 2022/01/26 06:25:40 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ t_box	*ps_box_create(char **nbrs)
 
 	box = ps_box_init(nbrs);
 	if (ps_check_box(box) == false)
-		ps_free_box(box);
+		ps_free_box(&box);
 	if (!ps_fill_box(box, nbrs))
 	{
-		ps_free_box(box);
+		ps_free_box(&box);
 		return (NULL);
 	}
 	return (box);

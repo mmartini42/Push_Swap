@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 21:45:01 by mathmart          #+#    #+#             */
-/*   Updated: 2022/01/26 02:14:34 by mathmart         ###   ########.fr       */
+/*   Updated: 2022/01/26 06:25:17 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ void	ft_check_identical(char **nbrs, int ac);
 
 /*  Memory */
 void	ps_final_free(int ac, char **nbrs);
+void	*ps_free_box(t_box **box);
 
 /* Errors */
 int		ps_error_args(void);
 void	ps_error_pars(char **nbrs, int ac);
 
-/* Stack */
-t_stack_elem	*ps_create_elem(int data);
-
 /* Box */
 t_box	*ps_box_init(char **nbrs);
 t_box	*ps_box_create(char **nbrs);
-void	ps_free_box(t_box *box);
 int		ps_get_stack_value(t_list *stack, int index);
 int		ps_get_value_index(t_list *stack, int value);
 
@@ -46,5 +43,13 @@ void	ps_swap(t_box *box, t_list *stack, bool value);
 void	ps_rotate(t_box *box, t_list **stack, bool value);
 void	ps_reverse(t_box *box, t_list **stack, bool value);
 void	ps_push(t_box *box, t_list **from, t_list **to, bool value);
+
+/* Sort */
+void	ps_sort_big(t_box *box, int chunks);
+void	ps_little_sort(t_box *box, t_list *stack);
+void	ps_hard_sort(t_box *box);
+void	lowest_to_top(t_box *box, t_list **stack, int lowest);
+void	fill_sorted_values(t_box *box, t_list *stack);
+void	ps_mid_sort(t_box *box);
 
 #endif

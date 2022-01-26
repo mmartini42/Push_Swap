@@ -231,7 +231,7 @@ RM				=	rm -f
 all: $(NAME)
 
 %.o:	%.c $(INCLUDES)
-	@$(GCC) $(FLAGS) -I $(INCLUDES_PATH) -c $< -o $@
+	@$(GCC) -I $(INCLUDES_PATH) -c $< -o $@
 	@printf "\033[2K\r$(BLUE)$(NAME): $(PURPLE)$<$(RESET)"
 
 $(NAME): $(OBJS)

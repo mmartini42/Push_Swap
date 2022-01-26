@@ -6,7 +6,7 @@
 #    By: mathmart <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 17:24:21 by mathmart          #+#    #+#              #
-#    Updated: 2021/12/12 15:25:13 by mathmart         ###   ########.fr        #
+#    Updated: 2022/01/17 01:17:54 by mathmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ OBJ_PATH	= $(addprefix $(OBJ_DIR)/, $(OBJS))
 #									Compilation Objects							#
 #################################################################################
 
-$(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c $(LIBFT) $(HEADER) | $(OBJ_DIR)
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) -c $< -o $@
 	@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
@@ -58,7 +58,8 @@ $(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
 #									Compilation C								#
 #################################################################################
 
-$(NAME): $(LIBFT) $(OBJ_PATH) $(HEADER)
+$(NAME): $(OBJ_PATH) $(HEADER)
+	@$(MAKE) -C libft/
 	@gcc $(CFLAGS) $(OBJ_PATH) $(LIBFT) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 

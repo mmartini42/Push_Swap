@@ -6,7 +6,7 @@
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 21:49:13 by mathmart          #+#    #+#             */
-/*   Updated: 2021/12/12 16:25:18 by mathmart         ###   ########.fr       */
+/*   Updated: 2022/01/14 05:41:07 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,14 @@ int	main(int ac, char **av)
 		nbrs = ps_parsing(av[1], ac);
 	else
 		nbrs = ps_check_args(av, ac);
-	for (int i = 0; nbrs[i]; i++)
-		dprintf(1, "%s\n", nbrs[i]);
-	// box = ps_box_create(nbrs);
+	box = ps_box_create(nbrs);
+	if (!box)
+	{
+		ps_final_free(ac, nbrs);
+		return (ps_error_args());
+	}
+	list_clear(box->stack_a, free);
+	free(box);
 	ps_final_free(ac, nbrs);
+	return (0);
 }

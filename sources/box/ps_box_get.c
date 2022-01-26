@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_create_elem.c                                 :+:      :+:    :+:   */
+/*   ps_box_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mathmart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/12 12:41:33 by lduplain          #+#    #+#             */
-/*   Updated: 2022/01/14 05:25:38 by mathmart         ###   ########.fr       */
+/*   Created: 2022/01/17 01:16:37 by mathmart          #+#    #+#             */
+/*   Updated: 2022/01/17 01:17:13 by mathmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "Push_swap.h"
 
-t_list	*list_create_elem(void *data)
+int	ps_get_stack_value(t_list *stack, int index)
 {
-	t_list	*list_elem;
+	return (((t_stack_elem *) list_get(stack, index)->data)->value);
+}
 
-	list_elem = ft_calloc(1, sizeof(t_list));
-	if (list_elem == NULL)
-		return (NULL);
-	list_elem->next = NULL;
-	list_elem->data = data;
-	return (list_elem);
+int	ps_get_value_index(t_list *stack, int value)
+{
+	int	index;
+
+	index = -1;
+	while (++index < list_size(stack))
+		if (ps_get_stack_value(stack, index) == value)
+			return (index);
+	return (-1);
 }
